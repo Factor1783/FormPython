@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
-import cgi
-import psycopg2
+import cgi, psycopg2
 
 form = cgi.FieldStorage()
 patfname =  form.getvalue('pfname')
@@ -18,7 +17,7 @@ cur = conn.cursor()
 
 #pid, lastname, firstname, address, email, did
 postgres_insert_query = """ INSERT INTO patient VALUES (%s,%s,%s,%s,%s,%s)"""
-record_to_insert = (pid, patfname, patlname, pataddress, patemail, docID)
+record_to_insert = (patID, patfname, patlname, pataddress, patemail, docID)
 cur.execute(postgres_insert_query, record_to_insert)
 
 
